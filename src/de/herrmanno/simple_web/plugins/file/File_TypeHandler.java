@@ -1,7 +1,7 @@
 package de.herrmanno.simple_web.plugins.file;
 
+import de.herrmanno.simple_web.plugins.file.File;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -19,7 +19,7 @@ public class File_TypeHandler implements TypeHandler<File> {
 	
 	@Override
 	public byte[] handle(File file) throws IOException {
-		try(InputStream is = cl.getResourceAsStream(dir + File.separatorChar+  file.getPath()); ByteArrayOutputStream os = new ByteArrayOutputStream();) {
+		try(InputStream is = cl.getResourceAsStream(dir + java.io.File.separatorChar+  file.getPath()); ByteArrayOutputStream os = new ByteArrayOutputStream();) {
 			byte[] buffer = new byte[1024];
 			int r;
 			while (true) {
@@ -31,5 +31,5 @@ public class File_TypeHandler implements TypeHandler<File> {
 			return os.toByteArray();
 		}
 	}
-
+	
 }
